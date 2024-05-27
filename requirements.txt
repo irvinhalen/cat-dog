@@ -1,0 +1,4 @@
+img2vec-pytorch==1.0.1
+pandas==2.0.2
+pillow==10.3.0
+scikit-learn==1.5.0
