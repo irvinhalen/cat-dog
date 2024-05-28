@@ -1,3 +1,6 @@
-model.p
-data
 venv
+model.p
+data/pet_dataset/train/*
+data/pet_dataset/val/*
+data/weather_dataset
+classify/*

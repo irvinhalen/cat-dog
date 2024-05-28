@@ -32,12 +32,15 @@ for j, dir_ in enumerate([train_dir, val_dir]):
 # train model
 model = RandomForestClassifier()
 model.fit(data['training_data'], data['training_labels'])
+print('Training')
 
 # test model
 y_pred = model.predict(data['validation_data'])
 score = accuracy_score(y_pred, data['validation_labels'])
+print(f'Score: {score}')
 
 # save the model
 with open('./model.p', 'wb') as f:
     pickle.dump(model, f)
     f.close()
+print('Model saved')

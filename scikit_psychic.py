@@ -8,14 +8,15 @@ with open('./model.p', 'rb') as f:
 
 img2vec = Img2Vec()
 
-image_path_dog = './data/pet_dataset/val/dog/dog15.jpg'
-image_path_cat = './data/pet_dataset/val/cat/cat15.jpg'
+filename = input('Info:\n• Filename is case sensitive\n• Include the extension\n\te.g., "Photo.JPEG", "Photo.jpg", "Photo.png"\n\nEnter filename: ')
+img_path = f'./classify/{filename}'
 
-img_dog = Image.open(image_path_dog)
-img_cat = Image.open(image_path_cat)
+try:
+    img = Image.open(img_path)
+    features = img2vec.get_vec(img)
+    pred = model.predict([features])
 
-features = img2vec.get_vec(img_cat)
-
-pred = model.predict([features])
-
-print(pred, type(pred))
+    pred_str = str(pred).strip('[]')
+    print(f"Prediction: {pred_str}")
+except:
+    print(f'File "{filename}" could not be found')
