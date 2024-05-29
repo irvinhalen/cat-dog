@@ -1,29 +1,29 @@
 import pandas as pd
 
 data = {
-    'apples': [3, 2, 5, 1],
-    'oranges': [5, 3, 7, 2]
+    'chicken': [3, 5, 6, 9],
+    'fish': [5, 3, 9, 6]
 }
 
-purchases = pd.DataFrame(data, index=['Diether', 'Bernard', 'Mikhael', 'David'])
+eaten = pd.DataFrame(data, index=['cat', 'dog', 'cheetah', 'wolf'])
 
 def switch(value):
     match value:
-        case 'Diether':
-            return purchases.loc['Diether']
-        case 'Bernard':
-            return purchases.loc['Bernard']
-        case 'Mikhael':
-            return purchases.loc['Mikhael']
-        case 'David':
-            return purchases.loc['David']
+        case 'cat':
+            return eaten.loc['cat']
+        case 'dog':
+            return eaten.loc['dog']
+        case 'cheetah':
+            return eaten.loc['cheetah']
+        case 'wolf':
+            return eaten.loc['wolf']
         case _:
             return
 
-guy = input('Enter name: ')
-selected_row = switch(guy)
+animal = input('Enter animal: ')
+selected_row = switch(animal)
 
 if selected_row is None:
-    print('The options are: Diether, Bernard, Mikhael, David')
+    print('The options are: cat, dog, cheetah, wolf')
 else:
-    print('Apples:' + str(selected_row['apples']) + '\nOranges:' + str(selected_row['oranges']))
+    print('chicken:' + str(selected_row['chicken']) + '\nfish:' + str(selected_row['fish']))
