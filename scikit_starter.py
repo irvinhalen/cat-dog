@@ -1,43 +1,32 @@
 import pandas as pd
-from sklearn.datasets import load_wine
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import classification_report
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
-wine_data = load_wine()
-wine_df = pd.DataFrame(wine_data.data, columns = wine_data.feature_names)
-wine_df['target'] = wine_data.target
+def create_dataset(data, n_predictions):
+    X, y = [], []
+    for i in range(len(data) - n_predictions):
+        X.append(data[i:i + n_predictions])
+        y.append(data[i + n_predictions])
+    return np.array(X), np.array(y)
 
-X = wine_df[wine_data.feature_names].copy()
-y = wine_df["target"].copy()
+data = [float(x) for x in input('CatDog wants to buy treats.\nCatDog needs to know how many treats they should eat for the next few days.\nEnter a series of numbers that are separated by space (e.g., "1 2 3 4 5"):\n').split()]
 
-scaler = StandardScaler()
-scaler.fit(X)
+n_predictions = int(input('CatDog wants a machine to predict how many treats they will eat after that.\nEnter number of predictions: '))
 
-X_scaled = scaler.transform(X)
+X, y = create_dataset(data, n_predictions)
 
-X_train_scaled, X_test_scaled, y_train, y_test = train_test_split(X_scaled, y, train_size = .7, random_state = 25)
+X_df = pd.DataFrame(X)
+y_df = pd.Series(y)
 
-logistic_regression = LogisticRegression()
-svm = SVC()
-tree = DecisionTreeClassifier()
+model = LinearRegression()
+model.fit(X_df, y_df)
 
-logistic_regression.fit(X_train_scaled, y_train)
-svm.fit(X_train_scaled, y_train)
-tree.fit(X_train_scaled, y_train)
+last_sequence = np.array(data[-n_predictions:]).reshape(1, -1)
+predicted = []
 
-log_reg_preds = logistic_regression.predict(X_test_scaled)
-svm_preds = svm.predict(X_test_scaled)
-tree_preds = tree.predict(X_test_scaled)
+for _ in range(n_predictions):
+    next_value = model.predict(last_sequence)[0]
+    predicted.append(next_value)
+    last_sequence = np.append(last_sequence[:, 1:], next_value).reshape(1, -1)
 
-model_preds = {
-    'Logistic Regression': log_reg_preds,
-    'Support Vector Machine': svm_preds,
-    'Decision Tree': tree_preds
-}
-
-for model, preds in model_preds.items():
-    print(f'{model} Results:\n{classification_report(y_test, preds)}', sep='\n\n')
+print(f"\nThe next {n_predictions} predicted number of treats CatDog will eat are: {str(predicted).strip('[]')}")
