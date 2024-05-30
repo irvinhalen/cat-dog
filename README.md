@@ -4,7 +4,14 @@
 
 ### About
 
-CatDog is an image classification application built with Python. It is made with the scikit-learn library. By presenting a picture of a dog or a cat, the application will predict whether it is a dog or a cat.
+Image Classifier is an image classification application built with Python. It is made with the scikit-learn library. By presenting a picture of a dog or a cat, the application will predict whether it is a dog or a cat.
+
+If you choose to run the Image Classifier I have excluded the dataset and model so we can all learn a little bit about Machine Learning. The instructions for how to create the model file are found in the Setup section below (The model file is needed for the Image Classifier to work).
+
+- scikit-psyche.py
+    - This file will train, test, and create the model
+- scikit-psychic.py
+    - This file will do the prediction
 
 ### Setup
 
@@ -45,3 +52,17 @@ python scikit_psychic.py
     - Filename is case sensitive
     - Include the extension
         - e.g., "Photo.JPEG", "Photo.jpg", "Photo.png"
+
+
+## Location by Index
+
+### About
+
+- pandas
+
+
+## Predicting the Next Numbers
+
+### About
+
+- scikit-learn
