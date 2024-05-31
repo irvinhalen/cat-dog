@@ -58,11 +58,31 @@ python scikit_psychic.py
 
 ### About
 
-- pandas
+Location by Index is a simple application that uses the pandas library. This application locates the values in the DataFrame using the index.
+
+- pandas_practice.py
+    - this file lets you know how many chicken and fish the cat, dog, cheetah, and wolf ate
+
+### Quick Start
+
+1. Run the command
+```sh
+python pandas_practice.py
+```
 
 
 ## Predicting the Next Numbers
 
 ### About
 
-- scikit-learn
+Predicting the Next Numbers is a simple application that uses the scikit-learn library. This application predicts the next set of numbers based on the array of numbers given by the user.
+
+- scikit_starter.py
+    - this file lets you know the predicted amount of treats CatDog will eat.
+
+### Quick Start
+
+1. Run the command
+```sh
+python scikit_starter.py
+```
