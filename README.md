@@ -33,7 +33,7 @@ pip install -r requirements.txt
     - Put pictures of dogs inside the dog folder
 5. Create two folders, **cat** and **dog**, and place them inside the val folder
     - Put pictures of cats inside the cat folder (Make sure they are different from the pictures placed in the train folder)
-    - Put pictures of gods inside the dog folder (Make sure they are different from the pictures placed in the val folder)
+    - Put pictures of dogs inside the dog folder (Make sure they are different from the pictures placed in the val folder)
 6. Run the command
 ```sh
 python scikit_psyche.py
